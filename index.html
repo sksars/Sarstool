@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>FlyAI Tools – All-in-One Online Utility Platform</title>
+    <meta
+      name="description"
+      content="Edit photos, remove backgrounds, generate QR codes and barcodes, convert PDFs and audio/video files, and search YouTube privately in your browser with FlyAI Tools."
+    />
+
+    <!-- OpenGraph & Twitter Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FlyAI Tools" />
+    <meta property="og:title" content="FlyAI Tools – All-in-One Online Utility Platform" />
+    <meta
+      property="og:description"
+      content="Fast, privacy-first browser utilities for photo editing, QR &amp; barcodes, file conversion, audio/video processing, and YouTube discovery."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FlyAI Tools – All-in-One Online Utility Platform" />
+    <meta
+      name="twitter:description"
+      content="50+ client-side online tools for photos, PDFs, QR codes, barcodes, audio, video, and links—no login required."
+    />
+
+    <!-- PWA Configuration -->
+    <meta name="theme-color" content="#0F52BA" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="FlyAI Tools" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icon.svg" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+    <!-- Fonts: Plus Jakarta Sans (Display/UI), DM Sans (Body), JetBrains Mono (Tabular Data) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "FlyAI Tools",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires HTML5 Canvas, Web Audio, and JavaScript",
+        "description": "All-in-one browser-based utility platform for photo editing, QR & barcode generation, file conversion, audio/video processing, link inspection, and YouTube tools.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- Top Bar: Strictly 3 Zones -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#home" class="brand-link" id="brand-home-link">
+          <img src="/assets/icon.svg" alt="" width="28" height="28" class="brand-icon" />
+          <span class="brand-wordmark">FlyAI Tools</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary Categories">
+          <a href="#category/all" class="nav-link" data-nav-cat="all">All Tools</a>
+          <a href="#category/photo" class="nav-link" data-nav-cat="photo">Photo</a>
+          <a href="#category/converter" class="nav-link" data-nav-cat="converter">Files</a>
+          <a href="#category/media" class="nav-link" data-nav-cat="media">Media</a>
+          <a href="#category/youtube" class="nav-link" data-nav-cat="youtube">YouTube</a>
+        </nav>
+
+        <div class="header-actions">
+          <button type="button" id="pwa-install-btn" class="btn btn-primary btn-sm hidden">Install App</button>
+          <button type="button" id="theme-toggle-btn" class="icon-btn" aria-label="Toggle Light or Dark Mode" title="Toggle Theme">
+            <span id="theme-icon-sun" class="hidden" aria-hidden="true">☀</span>
+            <span id="theme-icon-moon" aria-hidden="true">☾</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Header Advertisement Placement (Google AdSense Compatible) -->
+    <div class="container ad-wrapper">
+      <aside class="ad-slot ad-slot-leaderboard" aria-label="Advertisement">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-placeholder-text">Google AdSense Header Unit (728×90 Responsive)</div>
+      </aside>
+    </div>
+
+    <main id="app-main" class="container main-shell">
+      <!-- Catalog / Dashboard View -->
+      <section id="catalog-view">
+        <div class="hero-block">
+          <div class="hero-copy">
+            <h1>Every file, photo, code &amp; media utility in one fast workspace.</h1>
+            <p class="hero-sub">
+              50+ browser-powered tools that run locally on your device. No account required, no file uploads for core utilities.
+            </p>
+          </div>
+          <div class="search-panel">
+            <div class="search-box">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                type="search"
+                id="global-search-input"
+                placeholder="Search tools (e.g. background remover, QR, PDF, MP3, passport, GIF)..."
+                aria-label="Search all tools"
+              />
+              <kbd class="search-kbd" aria-hidden="true">/</kbd>
+            </div>
+            <div class="workspace-quick-links">
+              <a href="#page/favorites" class="quiet-link">Favorites (<span id="fav-count-inline" class="tabular-nums">0</span>)</a>
+              <span aria-hidden="true">·</span>
+              <a href="#page/history" class="quiet-link">Download History</a>
+              <span aria-hidden="true">·</span>
+              <button type="button" id="open-firebase-modal-btn" class="quiet-link-btn">Cloud Settings</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="category-bar" id="category-tabs" role="tablist" aria-label="Tool Categories"></div>
+
+        <!-- Recently Used Strip (Rendered dynamically when non-empty) -->
+        <section id="recents-section" class="strip-section hidden">
+          <div class="strip-header">
+            <h2>Recently Used</h2>
+            <button type="button" id="clear-recents-btn" class="quiet-link-btn">Clear</button>
+          </div>
+          <div id="recents-grid" class="recents-row"></div>
+        </section>
+
+        <!-- Main Tools Grid -->
+        <section class="tools-section">
+          <div class="strip-header">
+            <h2 id="catalog-heading">All Tools</h2>
+            <span id="catalog-count" class="muted-text tabular-nums"></span>
+          </div>
+          <div id="tools-grid" class="tools-grid"></div>
+        </section>
+
+        <!-- Homepage Advertisement Placement -->
+        <div class="ad-wrapper" style="margin-top:2rem">
+          <aside class="ad-slot ad-slot-banner" aria-label="Advertisement">
+            <span class="ad-label">Advertisement</span>
+            <div class="ad-placeholder-text">Google AdSense Homepage In-Feed Unit (Responsive)</div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Active Tool Workspace View -->
+      <section id="tool-view" class="hidden">
+        <div class="tool-topbar">
+          <div class="tool-breadcrumb">
+            <button type="button" id="back-to-catalog" class="btn btn-secondary btn-sm">← All Tools</button>
+            <span class="muted-text" aria-hidden="true">/</span>
+            <span id="active-tool-cat" class="muted-text"></span>
+          </div>
+          <button type="button" id="active-tool-fav-btn" class="btn btn-secondary btn-sm">☆ Save Tool</button>
+        </div>
+
+        <div class="tool-header-card">
+          <div id="active-tool-icon" class="tool-icon-box tool-icon-lg"></div>
+          <div>
+            <h1 id="active-tool-title">Tool Name</h1>
+            <p id="active-tool-desc" class="muted-text"></p>
+          </div>
+        </div>
+
+        <div id="tool-mount"></div>
+
+        <!-- Tool Page Advertisement Placement -->
+        <div class="ad-wrapper" style="margin-top:2rem">
+          <aside class="ad-slot ad-slot-banner" aria-label="Advertisement">
+            <span class="ad-label">Advertisement</span>
+            <div class="ad-placeholder-text">Google AdSense Tool Workspace Unit (Responsive)</div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Legal / Info / Favorites / History View -->
+      <section id="page-view" class="hidden">
+        <div class="tool-topbar">
+          <button type="button" id="page-back-btn" class="btn btn-secondary btn-sm">← Back to Tools</button>
+        </div>
+        <div id="page-mount"></div>
+      </section>
+    </main>
+
+    <!-- Footer Advertisement Placement -->
+    <div class="container ad-wrapper">
+      <aside class="ad-slot ad-slot-leaderboard" aria-label="Advertisement">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-placeholder-text">Google AdSense Footer Unit (Responsive)</div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <strong>FlyAI Tools</strong>
+          <span class="muted-text">Privacy-first browser utilities · © <span id="footer-year"></span></span>
+        </div>
+        <nav class="footer-links" aria-label="Footer Links">
+          <a href="#page/about">About</a>
+          <a href="#page/contact">Contact</a>
+          <a href="#page/privacy">Privacy Policy</a>
+          <a href="#page/terms">Terms &amp; Conditions</a>
+          <a href="#page/disclaimer">Disclaimer</a>
+          <a href="#page/history">Download History</a>
+          <a href="/sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Mobile Bottom Quick Navigation Bar -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile Quick Navigation">
+      <a href="#category/all" class="mb-nav-item" data-mb="tools">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span>Tools</span>
+      </a>
+      <a href="#page/favorites" class="mb-nav-item" data-mb="favorites">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Favorites</span>
+      </a>
+      <a href="#page/history" class="mb-nav-item" data-mb="history">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>History</span>
+      </a>
+      <a href="#page/about" class="mb-nav-item" data-mb="about">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Info</span>
+      </a>
+    </nav>
+
+    <!-- Offline Mode Banner -->
+    <div id="offline-banner" class="offline-banner hidden" role="status">
+      Offline Mode — Browser utilities remain active from local cache.
+    </div>
+
+    <!-- Modal & Toast Containers -->
+    <div id="modal-root"></div>
+    <div id="toast-container" aria-live="polite"></div>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
